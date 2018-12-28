@@ -1,4 +1,4 @@
-#include"AVL.h"
+ï»¿#include"AVL.h"
 #include<iostream>
 #include<iomanip>
 using namespace std;
@@ -14,11 +14,11 @@ int AVL::max(int a, int b)
 {
 	return (a > b ? a : b);
 }
-AVL::~AVL()//Îö¹¹
+AVL::~AVL()//ææ„
 {
 	deletehelper(myRoot);
 }
-void AVL::deletehelper(Node* p)//Îö¹¹¸¨Öúº¯Êı
+void AVL::deletehelper(Node* p)//ææ„è¾…åŠ©å‡½æ•°
 {
 	if (p != 0)
 	{
@@ -31,23 +31,23 @@ bool AVL::empty() const
 {
 	return myRoot == 0;
 }
-void AVL::preorder()const//Ç°ĞòVLR
+void AVL::preorder()const//å‰åºVLR
 {
 	preorderhelper(myRoot);
 	cout << endl;
 }
-void AVL::inorder()const//ÖĞĞòLVR
+void AVL::inorder()const//ä¸­åºLVR
 {
 	inorderhelper(myRoot);
 	cout << endl;
 }
-void AVL::postorder()const//ºóĞòLRV
+void AVL::postorder()const//ååºLRV
 {
 	postorderhelper(myRoot);
 	cout << endl;
 }
 
-void AVL::preorderhelper(Node* p) const//Ç°ĞòVLR¸¨Öúº¯Êı
+void AVL::preorderhelper(Node* p) const//å‰åºVLRè¾…åŠ©å‡½æ•°
 {
 	if (p != 0)
 	{
@@ -57,7 +57,7 @@ void AVL::preorderhelper(Node* p) const//Ç°ĞòVLR¸¨Öúº¯Êı
 	}
 }
 
-void AVL::inorderhelper(Node* p) const//ÖĞĞòLVR¸¨Öúº¯Êı
+void AVL::inorderhelper(Node* p) const//ä¸­åºLVRè¾…åŠ©å‡½æ•°
 {
 	if (p != 0)
 	{
@@ -66,7 +66,7 @@ void AVL::inorderhelper(Node* p) const//ÖĞĞòLVR¸¨Öúº¯Êı
 		inorderhelper(p->right);//R
 	}
 }
-void AVL::postorderhelper(Node* p) const//ºóĞòLRV¸¨Öúº¯Êı
+void AVL::postorderhelper(Node* p) const//ååºLRVè¾…åŠ©å‡½æ•°
 {
 	if (p != 0)
 	{
@@ -75,32 +75,32 @@ void AVL::postorderhelper(Node* p) const//ºóĞòLRV¸¨Öúº¯Êı
 		cout << p->data << " ";//V
 	}
 }
-Node* AVL::add(Node* &loc,const string& item,const string& pass)//Ìí¼Ó½áµã
+Node* AVL::add(Node* &loc,const string& item,const string& pass)//æ·»åŠ ç»“ç‚¹
 {
-	if (loc == 0)//´´½¨½áµã
+	if (loc == 0)//åˆ›å»ºç»“ç‚¹
 	{
 		loc = new Node(item, pass);
 	}
-	else if (item < loc->data)//ÏÂ½µµ½×ó×ÓÊ÷
+	else if (item < loc->data)//ä¸‹é™åˆ°å·¦å­æ ‘
 	{
 		loc->left = add(loc->left, item, pass);
 		if (height(loc->left) - height(loc->right) == 2)
 		{
 			if (item < loc->left->data)
-				loc = turnright(loc);//Íâ²¿£¬ÓÒĞı
+				loc = turnright(loc);//å¤–éƒ¨ï¼Œå³æ—‹
 			else
-				loc = turnleftright(loc);//ÄÚ²¿£¬×ó-ÓÒĞı
+				loc = turnleftright(loc);//å†…éƒ¨ï¼Œå·¦-å³æ—‹
 		}
 	}
-	else if (item > loc->data)//ÏÂ½µµ½ÓÒ×ÓÊ÷
+	else if (item > loc->data)//ä¸‹é™åˆ°å³å­æ ‘
 	{
 		loc->right = add(loc->right, item, pass);
 		if (height(loc->right) - height(loc->left) == 2)
 		{
 			if (item > loc->right->data)
-				loc = turnleft(loc);//Íâ²¿£¬×óĞı
+				loc = turnleft(loc);//å¤–éƒ¨ï¼Œå·¦æ—‹
 			else
-				loc = turnrightleft(loc);//ÄÚ²¿£¬ÓÒ-×óĞı
+				loc = turnrightleft(loc);//å†…éƒ¨ï¼Œå³-å·¦æ—‹
 		}
 	}
 	else
@@ -117,57 +117,57 @@ void AVL::add(const string& item, const string& pass)
 	else
 		add(myRoot, item, pass);
 }
-Node* AVL::removehelper(Node* &loc, Node* &p)//É¾³ı½Úµã¸¨Öúº¯Êı
+Node* AVL::removehelper(Node* &loc, Node* &p)//åˆ é™¤èŠ‚ç‚¹è¾…åŠ©å‡½æ•°
 {
-	if (loc == 0 || p == 0)//¿ÕÊ÷»òÉ¾³ı½Úµã²»´æÔÚ
+	if (loc == 0 || p == 0)//ç©ºæ ‘æˆ–åˆ é™¤èŠ‚ç‚¹ä¸å­˜åœ¨
 	{
 		return 0;
 	}
 
-	if (p->data < loc->data)//ÏÂ½µµ½×ó×ÓÊ÷
+	if (p->data < loc->data)//ä¸‹é™åˆ°å·¦å­æ ‘
 	{
 		loc->left = removehelper(loc->left, p);
 		if (height(loc->left) - height(loc->right) == -2)
 		{
-			Node* tmp = loc->right;//²»Æ½ºâµãµÄÏÂÒ»½Úµã
+			Node* tmp = loc->right;//ä¸å¹³è¡¡ç‚¹çš„ä¸‹ä¸€èŠ‚ç‚¹
 			if (height(tmp->left) > height(tmp->right))
-				loc = turnrightleft(loc);//ÄÚ²¿£¬ÓÒ-×óĞı
+				loc = turnrightleft(loc);//å†…éƒ¨ï¼Œå³-å·¦æ—‹
 			else
-				loc = turnleft(loc);//Íâ²¿£¬×óĞı
+				loc = turnleft(loc);//å¤–éƒ¨ï¼Œå·¦æ—‹
 		}
 	}
-	else if (p->data > loc->data)//ÏÂ½µµ½ÓÒ×ÓÊ÷
+	else if (p->data > loc->data)//ä¸‹é™åˆ°å³å­æ ‘
 	{
 		loc->right = removehelper(loc->right, p);
 		if (height(loc->right) - height(loc->left) == -2)
 		{
-			Node* tmp = loc->left;//²»Æ½ºâµãµÄÏÂÒ»½Úµã
+			Node* tmp = loc->left;//ä¸å¹³è¡¡ç‚¹çš„ä¸‹ä¸€èŠ‚ç‚¹
 			if (height(tmp->right) > height(tmp->left))
-				loc = turnleftright(loc);//ÄÚ²¿£¬×ó-ÓÒĞı
+				loc = turnleftright(loc);//å†…éƒ¨ï¼Œå·¦-å³æ—‹
 			else
-				loc = turnright(loc);//Íâ²¿£¬ÓÒĞı
+				loc = turnright(loc);//å¤–éƒ¨ï¼Œå³æ—‹
 		}
 	}
-	else//locÎª´ıÉ¾³ı½áµã
+	else//locä¸ºå¾…åˆ é™¤ç»“ç‚¹
 	{
-		if (loc->left != 0 && loc->right != 0)//É¾³ı½ÚµãÓĞÁ½¸ö×ÓÅ®
+		if (loc->left != 0 && loc->right != 0)//åˆ é™¤èŠ‚ç‚¹æœ‰ä¸¤ä¸ªå­å¥³
 		{
-			if (height(loc->left) > height(loc->right))//×ó×ÓÊ÷±ÈÓÒ×ÓÊ÷¸ß
+			if (height(loc->left) > height(loc->right))//å·¦å­æ ‘æ¯”å³å­æ ‘é«˜
 			{
-				Node* max = maximum(loc->left);//ÕÒ³öÉ¾³ı½Úµã×ó×ÓÊ÷µÄ×î´ó½Úµã
-				loc->data = max->data;//½«×î´ó½ÚµãÒÆ¶¯µ½É¾³ı½ÚµãµÄÎ»ÖÃ
+				Node* max = maximum(loc->left);//æ‰¾å‡ºåˆ é™¤èŠ‚ç‚¹å·¦å­æ ‘çš„æœ€å¤§èŠ‚ç‚¹
+				loc->data = max->data;//å°†æœ€å¤§èŠ‚ç‚¹ç§»åŠ¨åˆ°åˆ é™¤èŠ‚ç‚¹çš„ä½ç½®
 				loc->password = max->password;
-				removehelper(loc->left, max);//É¾³ıÔ­Î»ÖÃµÄ×î´ó½Úµã
+				removehelper(loc->left, max);//åˆ é™¤åŸä½ç½®çš„æœ€å¤§èŠ‚ç‚¹
 			}
-			else//ÓÒ×ÓÊ÷±È×ó×ÓÊ÷¸ß»òÒ»Ñù¸ß
+			else//å³å­æ ‘æ¯”å·¦å­æ ‘é«˜æˆ–ä¸€æ ·é«˜
 			{
-				Node* min = minimum(loc->right);//ÕÒ³öÉ¾³ı½ÚµãÓÒ×ÓÊ÷µÄ×îĞ¡½Úµã
-				loc->data = min->data;//½«×îĞ¡½ÚµãÒÆ¶¯µ½É¾³ı½ÚµãµÄÎ»ÖÃ
+				Node* min = minimum(loc->right);//æ‰¾å‡ºåˆ é™¤èŠ‚ç‚¹å³å­æ ‘çš„æœ€å°èŠ‚ç‚¹
+				loc->data = min->data;//å°†æœ€å°èŠ‚ç‚¹ç§»åŠ¨åˆ°åˆ é™¤èŠ‚ç‚¹çš„ä½ç½®
 				loc->password = min->password;
-				removehelper(loc->right, min);//É¾³ıÔ­Î»ÖÃµÄ×îĞ¡½Úµã
+				removehelper(loc->right, min);//åˆ é™¤åŸä½ç½®çš„æœ€å°èŠ‚ç‚¹
 			}
 		}
-		else//É¾³ı½ÚµãÓĞÒ»¸ö×ÓÅ®»òÃ»ÓĞ×ÓÅ®
+		else//åˆ é™¤èŠ‚ç‚¹æœ‰ä¸€ä¸ªå­å¥³æˆ–æ²¡æœ‰å­å¥³
 		{
 			Node* tmp = loc;
 			loc = (loc->left != 0) ? loc->left : loc->right;
@@ -176,18 +176,18 @@ Node* AVL::removehelper(Node* &loc, Node* &p)//É¾³ı½Úµã¸¨Öúº¯Êı
 	}
 	return loc;
 }
-void AVL::remove(const string& item)//É¾³ı½áµã
+void AVL::remove(const string& item)//åˆ é™¤ç»“ç‚¹
 {
 	Node* loc=search(item);
 	removehelper(myRoot, loc);
 
 }
-void AVL::graph()const//´òÓ¡Ê÷
+void AVL::graph()const//æ‰“å°æ ‘
 {
 	graphhelper(0, myRoot);
 }
 
-void AVL::graphhelper(int indent, Node* p)const//´òÓ¡Ê÷¸¨Öúº¯Êı
+void AVL::graphhelper(int indent, Node* p)const//æ‰“å°æ ‘è¾…åŠ©å‡½æ•°
 {
 	Node* subtree = p;
 	if (p != 0)
@@ -198,11 +198,11 @@ void AVL::graphhelper(int indent, Node* p)const//´òÓ¡Ê÷¸¨Öúº¯Êı
 	}
 }
 
-Node* AVL::turnleft(Node* pa)//×óĞı
+Node* AVL::turnleft(Node* pa)//å·¦æ—‹
 {
-	Node* tmp = pa->right;//ĞÂ¸ùÎª²»Æ½ºâµãµÄÓÒ×ÓÅ®
-	pa->right = tmp->left;//ĞÂ¸ùµÄÔ­×ó×ÓÊ÷¹ÒÔÚ²»Æ½ºâµãµÄÓÒ±ß
-	tmp->left = pa;//Ô­À´µÄ¸ù±äÎªĞÂ¸ùµÄ×ó×ÓÊ÷
+	Node* tmp = pa->right;//æ–°æ ¹ä¸ºä¸å¹³è¡¡ç‚¹çš„å³å­å¥³
+	pa->right = tmp->left;//æ–°æ ¹çš„åŸå·¦å­æ ‘æŒ‚åœ¨ä¸å¹³è¡¡ç‚¹çš„å³è¾¹
+	tmp->left = pa;//åŸæ¥çš„æ ¹å˜ä¸ºæ–°æ ¹çš„å·¦å­æ ‘
 
 	pa->height = 1 + max(height(pa->left), height(pa->right));
 	tmp->height = 1 + max(height(tmp->left), height(tmp->right));
@@ -210,11 +210,11 @@ Node* AVL::turnleft(Node* pa)//×óĞı
 	return tmp;
 }
 
-Node* AVL::turnright(Node* pa)//ÓÒĞı
+Node* AVL::turnright(Node* pa)//å³æ—‹
 {
-	Node* tmp = pa->left;//ĞÂ¸ùÎª²»Æ½ºâµãµÄ×ó×ÓÅ®
-	pa->left = tmp->right;//ĞÂ¸ùµÄÔ­ÓÒ×ÓÊ÷¹ÒÔÚ²»Æ½ºâµãµÄ×ó±ß
-	tmp->right = pa;//Ô­À´µÄ¸ù±äÎªĞÂ¸ùµÄÓÒ×ÓÊ÷
+	Node* tmp = pa->left;//æ–°æ ¹ä¸ºä¸å¹³è¡¡ç‚¹çš„å·¦å­å¥³
+	pa->left = tmp->right;//æ–°æ ¹çš„åŸå³å­æ ‘æŒ‚åœ¨ä¸å¹³è¡¡ç‚¹çš„å·¦è¾¹
+	tmp->right = pa;//åŸæ¥çš„æ ¹å˜ä¸ºæ–°æ ¹çš„å³å­æ ‘
 
 	pa->height = 1 + max(height(pa->left), height(pa->right));
 	tmp->height = 1 + max(height(tmp->left), height(tmp->right));
@@ -222,25 +222,25 @@ Node* AVL::turnright(Node* pa)//ÓÒĞı
 	return tmp;
 }
 
-Node* AVL::turnleftright(Node* pa)//×ó-ÓÒĞı×ª
+Node* AVL::turnleftright(Node* pa)//å·¦-å³æ—‹è½¬
 {
 	pa->left = turnleft(pa->left);
 	return turnright(pa);
 }
 
-Node* AVL::turnrightleft(Node* pa)//ÓÒ-×óĞı×ª
+Node* AVL::turnrightleft(Node* pa)//å³-å·¦æ—‹è½¬
 {
 	pa->right = turnright(pa->right);
 	return turnleft(pa);
 }
-Node* AVL::maximum(Node* loc)//²éÕÒÒÔlocÎª¸ùµÄ×ÓÅ®ÖĞ×î´óµÄ
+Node* AVL::maximum(Node* loc)//æŸ¥æ‰¾ä»¥locä¸ºæ ¹çš„å­å¥³ä¸­æœ€å¤§çš„
 {
 	if (loc == 0)
 		return 0;
 	while (loc->right != 0)
 		loc = loc->right;
 	return loc;
-}Node* AVL::minimum(Node* loc)//²éÕÒÒÔlocÎª¸ùµÄ×ÓÅ®ÖĞ×îĞ¡µÄ
+}Node* AVL::minimum(Node* loc)//æŸ¥æ‰¾ä»¥locä¸ºæ ¹çš„å­å¥³ä¸­æœ€å°çš„
 {
 	if (loc == 0)
 		return 0;
@@ -248,7 +248,7 @@ Node* AVL::maximum(Node* loc)//²éÕÒÒÔlocÎª¸ùµÄ×ÓÅ®ÖĞ×î´óµÄ
 		loc = loc->left;
 	return loc;
 }
-Node* AVL::search(const string& item)const//Ñ°ÕÒ½Úµã
+Node* AVL::search(const string& item)const//å¯»æ‰¾èŠ‚ç‚¹
 {
 	Node* loc = myRoot;
 	while (loc != 0 && loc->data != item)

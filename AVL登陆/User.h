@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include"AVL.h"
 class User
 {
 public:
-	void view();//Ö÷½çÃæ
-	void signUp();//×¢²á
-	void login();//µÇÂ½½çÃæ
+	void view();//ä¸»ç•Œé¢
+	void signUp();//æ³¨å†Œ
+	void login();//ç™»é™†ç•Œé¢
 private:
-	AVL info;//ÓÃ»§ĞÅÏ¢
+	AVL info;//ç”¨æˆ·ä¿¡æ¯
 };

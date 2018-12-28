@@ -1,4 +1,4 @@
-#include"User.h"
+Ôªø#include"User.h"
 #include<iostream>
 using namespace std;
 
@@ -6,14 +6,14 @@ void User::view()
 {
 	while (true)
 	{
-		system("cls");//«Â∆¡
+		system("cls");//Ê∏ÖÂ±è
 		cout << "    -------------------------------------------\n"
-			<< "     |           ª∂”≠ π”√’Àªßπ‹¿ÌœµÕ≥          |\n"
-			<< "     |           1.◊¢≤·                        |\n"
-			<< "     |           2.µ«¬Ω                        |\n"
-			<< "     |           3.ÕÀ≥ˆ                        |\n"
+			<< "     |           Ê¨¢Ëøé‰ΩøÁî®Ë¥¶Êà∑ÁÆ°ÁêÜÁ≥ªÁªü          |\n"
+			<< "     |           1.Ê≥®ÂÜå                        |\n"
+			<< "     |           2.ÁôªÈôÜ                        |\n"
+			<< "     |           3.ÈÄÄÂá∫                        |\n"
 			<< "     -------------------------------------------\n"
-			<< "                   «Î—°‘Ò1/2/3!\n";
+			<< "                   ËØ∑ÈÄâÊã©1/2/3!\n";
 		char choice;
 		cin >> choice;
 		switch (choice)
@@ -21,106 +21,106 @@ void User::view()
 		case '1':signUp(); break;
 		case '2':login(); break;
 		case '3':return;
-		default:cout << "         ‰»Î¥ÌŒÛ£°"; 
+		default:cout << "        ËæìÂÖ•ÈîôËØØÔºÅ"; 
 			system("pause");
 		}
 	}
 }
 
-void User::signUp()//◊¢≤·
+void User::signUp()//Ê≥®ÂÜå
 {
-	system("cls");//«Â∆¡
+	system("cls");//Ê∏ÖÂ±è
 	string name, password;
-	cout << "             ª∂”≠Ω¯»Î’Àªß◊¢≤·ΩÁ√Ê£°\n"
-		<< "                ‰»Î0∑µªÿ÷˜ΩÁ√Ê\n\n";
+	cout << "             Ê¨¢ËøéËøõÂÖ•Ë¥¶Êà∑Ê≥®ÂÜåÁïåÈù¢ÔºÅ\n"
+		<< "               ËæìÂÖ•0ËøîÂõû‰∏ªÁïåÈù¢\n\n";
 	while (true)
 	{
-		cout << "               «Î ‰»Î”√ªß√˚£∫";
+		cout << "               ËØ∑ËæìÂÖ•Áî®Êà∑ÂêçÔºö";
 		cin >> name;
 		if (name == "0") break;
 		else if (info.search(name) != NULL)
 		{
-			cout << "\n               ∏√’À∫≈“—¥Ê‘⁄£¨«Î÷ÿ–¬ ‰»Î£°\n\n";
+			cout << "\n               ËØ•Ë¥¶Âè∑Â∑≤Â≠òÂú®ÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•ÔºÅ\n\n";
 			system("pause");
 		}
 		else
 		{
-			cout << "\n               «Î ‰»Î√‹¬Î£∫";
+			cout << "\n               ËØ∑ËæìÂÖ•ÂØÜÁ†ÅÔºö";
 			cin >> password;
 			info.add(name, password);
-			cout << "\n               πßœ≤ƒ„◊¢≤·≥…π¶£°\n";
+			cout << "\n               ÊÅ≠Âñú‰Ω†Ê≥®ÂÜåÊàêÂäüÔºÅ\n";
 			system("pause");
 			break;
 		}
 	}
 }
 
-void User::login()//µ«¬Ω
+void User::login()//ÁôªÈôÜ
 {
 	while (true)
 	{
-		system("cls");//«Â∆¡
+		system("cls");//Ê∏ÖÂ±è
 		string name, password;
-		cout << "             ª∂”≠Ω¯»Î”√ªßµ«¬ºΩÁ√Ê£°\n\n";
-		cout << "               «Î ‰»Î”√ªß√˚£∫";
+		cout << "             Ê¨¢ËøéËøõÂÖ•Áî®Êà∑ÁôªÂΩïÁïåÈù¢ÔºÅ\n\n";
+		cout << "               ËØ∑ËæìÂÖ•Áî®Êà∑ÂêçÔºö";
 		cin >> name;
-		cout << "\n               «Î ‰»Î√‹¬Î£∫";
+		cout << "\n               ËØ∑ËæìÂÖ•ÂØÜÁ†ÅÔºö";
 		cin >> password;	
 		if (info.search(name) == 0)
 		{
-			cout << "\n               ”√ªß≤ª¥Ê‘⁄£°«Î÷ÿ–¬ ‰»Î\n";
+			cout << "\n               Áî®Êà∑‰∏çÂ≠òÂú®ÔºÅËØ∑ÈáçÊñ∞ËæìÂÖ•\n";
 			system("pause");
 		}
 		else if (password != info.search(name)->getPass())
 		{
-			cout << "\n               √‹¬Î¥ÌŒÛ£°«Î÷ÿ–¬ ‰»Î\n";
+			cout << "\n               ÂØÜÁ†ÅÈîôËØØÔºÅËØ∑ÈáçÊñ∞ËæìÂÖ•\n";
 			system("pause");
 		}
 		else
 		{
-			cout << "\n               µ«¬Ω≥…π¶£°\n";
+			cout << "\n               ÁôªÈôÜÊàêÂäüÔºÅ\n";
 			system("pause");
 			while (true)
 			{
-				system("cls");//«Â∆¡
-				cout << "               1.–ﬁ∏ƒ√‹¬Î\n"
-					<< "               2.…æ≥˝’Àªß\n"
-					<< "               3.ÕÀ≥ˆµ«¬Ω\n"
-					<< "               «Î—°‘Ò1/2/3!\n";
+				system("cls");//Ê∏ÖÂ±è
+				cout << "               1.‰øÆÊîπÂØÜÁ†Å\n"
+					<< "               2.Âà†Èô§Ë¥¶Êà∑\n"
+					<< "               3.ÈÄÄÂá∫ÁôªÈôÜ\n"
+					<< "               ËØ∑ÈÄâÊã©1/2/3!\n";
 				char choice;
 				cin >> choice;
 				if (choice == '3')
 					return;
 				else if (choice == '1')
 				{
-					system("cls");//«Â∆¡
-					cout << "             ª∂”≠Ω¯»Î√‹¬Î–ﬁ∏ƒΩÁ√Ê£°\n";
+					system("cls");//Ê∏ÖÂ±è
+					cout << "             Ê¨¢ËøéËøõÂÖ•ÂØÜÁ†Å‰øÆÊîπÁïåÈù¢ÔºÅ\n";
 					string pass1, pass2;
 					while (true)
 					{
-						cout << "             «Î ‰»Î–¬√‹¬Î:";
+						cout << "             ËØ∑ËæìÂÖ•Êñ∞ÂØÜÁ†Å:";
 						cin >> pass1;
-						cout << "\n             «Î‘Ÿ¥Œ ‰»Î–¬√‹¬Î:";
+						cout << "\n             ËØ∑ÂÜçÊ¨°ËæìÂÖ•Êñ∞ÂØÜÁ†Å:";
 						cin >> pass2;
 						if (pass1 != pass2)
-							cout << "\n             ¡Ω¥Œ ‰»Î≤ª“ª÷¬£°«Î÷ÿ–¬ ‰»Î\n\n";
+							cout << "\n             ‰∏§Ê¨°ËæìÂÖ•‰∏ç‰∏ÄËá¥ÔºÅËØ∑ÈáçÊñ∞ËæìÂÖ•\n\n";
 						else
 							break;
 					}
 					info.search(name)->changePass(pass2);
-					cout << "\n             –ﬁ∏ƒ√‹¬Î≥…π¶£°\n";
+					cout << "\n             ‰øÆÊîπÂØÜÁ†ÅÊàêÂäüÔºÅ\n";
 					system("pause");
 				}
 				else if (choice == '2')
 				{
-					system("cls");//«Â∆¡
-					cout << "             …æ≥˝≥…π¶£°\n";
+					system("cls");//Ê∏ÖÂ±è
+					cout << "             Âà†Èô§ÊàêÂäüÔºÅ\n";
 					info.remove(name);
 					system("pause");
 					return;
 				}
 				else
-					cout << "             «Î÷ÿ–¬ ‰»Î£°";
+					cout << "             ËØ∑ÈáçÊñ∞ËæìÂÖ•ÔºÅ";
 			}
 		}
 		
