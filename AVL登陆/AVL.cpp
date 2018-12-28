@@ -6,6 +6,10 @@ string Node::getPass()
 {
 	return password;
 }
+string Node::getName()
+{
+	return data;
+}
 void Node::changePass(const string pass)
 {
 	password = pass;
@@ -73,6 +77,19 @@ void AVL::postorderhelper(Node* p) const//后序LRV辅助函数
 		postorderhelper(p->left);//L
 		postorderhelper(p->right);//R
 		cout << p->data << " ";//V
+	}
+}
+void AVL::showinfo(std::ostream& out) const//打印数据信息
+{
+	showinfo(myRoot, out);
+}
+void AVL::showinfo(Node* p, std::ostream& out) const
+{
+	if (p != 0)
+	{
+		out << p->data << "@"<< p->password<<std::endl;//V
+		showinfo(p->left,out);//L
+		showinfo(p->right,out);//R
 	}
 }
 Node* AVL::add(Node* &loc,const string& item,const string& pass)//添加结点

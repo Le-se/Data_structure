@@ -7,6 +7,7 @@ public:
 	Node(std::string item) { height = 0; data = item; left = right = 0; }
 	Node(std::string item, std::string pass) { height = 0; data = item; password = pass; left = right = 0; }
 	std::string getPass();
+	std::string getName();
 	void changePass(const std::string pass);
 	friend class AVL;
 private:
@@ -29,6 +30,8 @@ public:
 		void preorderhelper(Node* p)const;//前序VLR辅助函数
 		void inorderhelper(Node* p)const;//中序LVR辅助函数
 		void postorderhelper(Node* p)const;//后序LRV辅助函数
+		void showinfo(std::ostream& out)const;//导出信息
+		void showinfo(Node* p, std::ostream& out)const;
 		Node* search(const std::string& item)const;//查找节点
 		Node* add(Node* &loc, const std::string& item,const std::string& pass);//添加节点
 		void add(const std::string& item,const std::string& pass);

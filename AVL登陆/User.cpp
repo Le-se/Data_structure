@@ -1,7 +1,37 @@
 ﻿#include"User.h"
 #include<iostream>
+#include<fstream>
 using namespace std;
 
+void User::infowrite()
+{
+	ofstream out("user.txt");
+	info.showinfo(out);
+	out.close();
+}
+void User::inforead()
+{
+	ifstream in("user.txt");
+	char s[50];
+	while (in.peek() != EOF)
+	{
+		in.getline(s,sizeof(s));
+		int i = 0;
+		for (i = 0; i < strlen(s); i++)
+		{
+			if (s[i] == '@')
+			{
+				string name(s,0,i), password(s,i+1,strlen(s));
+				info.add(name, password);
+				break;
+			}
+		}
+	}
+}
+User::User()
+{
+	inforead();
+}
 void User::view()
 {
 	while (true)
@@ -20,7 +50,9 @@ void User::view()
 		{
 		case '1':signUp(); break;
 		case '2':login(); break;
-		case '3':return;
+		case '3':
+			infowrite();
+			return;
 		default:cout << "        输入错误！"; 
 			system("pause");
 		}
@@ -36,7 +68,7 @@ void User::signUp()//注册
 	while (true)
 	{
 		cout << "               请输入用户名：";
-		cin >> name;
+		getline(cin, name);
 		if (name == "0") break;
 		else if (info.search(name) != NULL)
 		{
@@ -46,7 +78,7 @@ void User::signUp()//注册
 		else
 		{
 			cout << "\n               请输入密码：";
-			cin >> password;
+			getline(cin, password);
 			info.add(name, password);
 			cout << "\n               恭喜你注册成功！\n";
 			system("pause");
@@ -63,9 +95,9 @@ void User::login()//登陆
 		string name, password;
 		cout << "             欢迎进入用户登录界面！\n\n";
 		cout << "               请输入用户名：";
-		cin >> name;
+		getline(cin, name);
 		cout << "\n               请输入密码：";
-		cin >> password;	
+		getline(cin, password);
 		if (info.search(name) == 0)
 		{
 			cout << "\n               用户不存在！请重新输入\n";
@@ -99,9 +131,9 @@ void User::login()//登陆
 					while (true)
 					{
 						cout << "             请输入新密码:";
-						cin >> pass1;
+						getline(cin, pass1);
 						cout << "\n             请再次输入新密码:";
-						cin >> pass2;
+						getline(cin, pass2);
 						if (pass1 != pass2)
 							cout << "\n             两次输入不一致！请重新输入\n\n";
 						else
