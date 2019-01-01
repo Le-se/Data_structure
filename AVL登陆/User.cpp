@@ -19,7 +19,7 @@ void User::inforead()
 		int i = 0;
 		for (i = 0; i < strlen(s); i++)
 		{
-			if (s[i] == '@')
+			if (s[i] == '|')
 			{
 				string name(s,0,i), password(s,i+1,strlen(s));
 				info.add(name, password);
@@ -68,7 +68,7 @@ void User::signUp()//注册
 	while (true)
 	{
 		cout << "               请输入用户名：";
-		getline(cin, name);
+		cin>>name;
 		if (name == "0") break;
 		else if (info.search(name) != NULL)
 		{
@@ -78,7 +78,7 @@ void User::signUp()//注册
 		else
 		{
 			cout << "\n               请输入密码：";
-			getline(cin, password);
+			cin>>password;
 			info.add(name, password);
 			cout << "\n               恭喜你注册成功！\n";
 			system("pause");
@@ -95,9 +95,9 @@ void User::login()//登陆
 		string name, password;
 		cout << "             欢迎进入用户登录界面！\n\n";
 		cout << "               请输入用户名：";
-		getline(cin, name);
+		cin>>name;
 		cout << "\n               请输入密码：";
-		getline(cin, password);
+		cin>>password;
 		if (info.search(name) == 0)
 		{
 			cout << "\n               用户不存在！请重新输入\n";
@@ -131,9 +131,9 @@ void User::login()//登陆
 					while (true)
 					{
 						cout << "             请输入新密码:";
-						getline(cin, pass1);
+						cin >> pass1;
 						cout << "\n             请再次输入新密码:";
-						getline(cin, pass2);
+						cin >> pass2;
 						if (pass1 != pass2)
 							cout << "\n             两次输入不一致！请重新输入\n\n";
 						else

@@ -87,7 +87,7 @@ void AVL::showinfo(Node* p, std::ostream& out) const
 {
 	if (p != 0)
 	{
-		out << p->data << "@"<< p->password<<std::endl;//V
+		out << p->data << "|"<< p->password<<std::endl;//V
 		showinfo(p->left,out);//L
 		showinfo(p->right,out);//R
 	}
