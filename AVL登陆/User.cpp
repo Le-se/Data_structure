@@ -68,7 +68,8 @@ void User::signUp()//注册
 	while (true)
 	{
 		cout << "               请输入用户名：";
-		cin>>name;
+		cin.get();//清除缓存区的回车
+		getline(cin, name);
 		if (name == "0") break;
 		else if (info.search(name) != NULL)
 		{
@@ -78,9 +79,11 @@ void User::signUp()//注册
 		else
 		{
 			cout << "\n               请输入密码：";
-			cin>>password;
+			cin.get();//清除缓存区的回车
+			getline(cin, password);
 			info.add(name, password);
 			cout << "\n               恭喜你注册成功！\n";
+			infowrite();//更新数据
 			system("pause");
 			break;
 		}
@@ -95,9 +98,11 @@ void User::login()//登陆
 		string name, password;
 		cout << "             欢迎进入用户登录界面！\n\n";
 		cout << "               请输入用户名：";
-		cin>>name;
+		cin.get();//清除缓存区的回车
+		getline(cin, name);
 		cout << "\n               请输入密码：";
-		cin>>password;
+		cin.get();//清除缓存区的回车
+		getline(cin, password);
 		if (info.search(name) == 0)
 		{
 			cout << "\n               用户不存在！请重新输入\n";
@@ -131,9 +136,11 @@ void User::login()//登陆
 					while (true)
 					{
 						cout << "             请输入新密码:";
-						cin >> pass1;
+						cin.get();//清除缓存区的回车
+						getline(cin, pass1);
 						cout << "\n             请再次输入新密码:";
-						cin >> pass2;
+						cin.get();//清除缓存区的回车
+						getline(cin, pass2);
 						if (pass1 != pass2)
 							cout << "\n             两次输入不一致！请重新输入\n\n";
 						else
@@ -141,6 +148,7 @@ void User::login()//登陆
 					}
 					info.search(name)->changePass(pass2);
 					cout << "\n             修改密码成功！\n";
+					infowrite();//更新数据
 					system("pause");
 				}
 				else if (choice == '2')
@@ -148,6 +156,7 @@ void User::login()//登陆
 					system("cls");//清屏
 					cout << "             删除成功！\n";
 					info.remove(name);
+					infowrite();//更新数据
 					system("pause");
 					return;
 				}
